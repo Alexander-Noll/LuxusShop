@@ -1,1 +1,14 @@
-<div class="container">it works!!</div>
+<link rel="header.component.css" href="stylesheet">
+<div class="hero">
+  <nav>
+    <img src="assets/images/menu.png" class="menu-img" />
+    <img src="assets/images/logo.png" alt="logo-img" />
+    <ul>
+      <li><a href=""></a>search</li>
+      <li><a href=""></a>Latest</li>
+      <li><a href=""></a>Login</li>
+      <li><a href=""></a>About Us</li>
+    </ul>
+    <button type="button" [routerLink]="['/about']" routerLinkActive="router-link-active">BOT</button>
+  </nav>
+</div>

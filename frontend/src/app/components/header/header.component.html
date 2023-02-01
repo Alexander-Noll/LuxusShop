@@ -2,11 +2,11 @@
 <div class="hero">
   <nav>
     <img src="assets/images/menu.png" class="menu-img" />
-    <img src="assets/images/logo.png" alt="logo-img" />
+    <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo-img" /></a>
     <ul>
-      <li><a href="">search</a></li>
-      <li><a href="">Latest</a></li>
-      <li><a href="">Login</a></li>
+      <li><a [routerLink]="['/products']">Products</a></li>
+      <li><a [routerLink]="['/latest']">Latest</a></li>
+      <li><a [routerLink]="['/login']">Login</a></li>
       <li><a [routerLink]="['/about']">About</a></li>
     </ul>
     <button type="button" [routerLink]="['']" routerLinkActive="router-link-active">BOT</button>

@@ -4,11 +4,11 @@
     <img src="assets/images/menu.png" class="menu-img" />
     <img src="assets/images/logo.png" alt="logo-img" />
     <ul>
-      <li><a href=""></a>search</li>
-      <li><a href=""></a>Latest</li>
-      <li><a href=""></a>Login</li>
-      <li><a href=""></a>About Us</li>
+      <li><a href="">search</a></li>
+      <li><a href="">Latest</a></li>
+      <li><a href="">Login</a></li>
+      <li><a [routerLink]="['/about']">About</a></li>
     </ul>
-    <button type="button" [routerLink]="['/about']" routerLinkActive="router-link-active">BOT</button>
+    <button type="button" [routerLink]="['']" routerLinkActive="router-link-active">BOT</button>
   </nav>
 </div>

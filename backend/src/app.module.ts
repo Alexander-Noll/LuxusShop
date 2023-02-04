@@ -8,7 +8,7 @@ import { BuilderModule } from './modules/builder/builder.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://bobmali:TbQcdxWYdctLguAj@cluster0.vk4svch.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://bobmali:TbQcdxWYdctLguAj@cluster0.vk4svch.mongodb.net/shop?retryWrites=true&w=majority',
     ),
     BuilderModule,
     HttpModule

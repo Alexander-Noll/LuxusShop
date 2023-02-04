@@ -2,7 +2,7 @@ import { Schema as MongooseSchema } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
-export class items {
+export class Item {
   @Prop({ required: true })
   price: string;
 
@@ -16,4 +16,4 @@ export class items {
   id: string;
 }
 
-export const ItemsSchema = SchemaFactory.createForClass(items);
+export const ItemsSchema = SchemaFactory.createForClass(Item);

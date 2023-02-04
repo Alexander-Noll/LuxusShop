@@ -21,7 +21,7 @@ import { ProductsComponent } from './components/pages/products/products.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

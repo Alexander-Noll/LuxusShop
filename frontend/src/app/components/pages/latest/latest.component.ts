@@ -10,6 +10,9 @@ export class LatestComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+
+
   }
 
 }

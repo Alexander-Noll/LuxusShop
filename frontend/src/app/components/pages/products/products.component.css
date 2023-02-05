@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(100px, 1fr));
+  grid-gap: 10px;
+}
+
+.grid-item {
+  background-image: url('src/assets/images/x.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  width: 100px;
+  height: 200px;
+}

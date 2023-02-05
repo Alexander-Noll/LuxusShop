@@ -8,7 +8,6 @@ import { ProductsComponent } from './components/pages/products/products.componen
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-
   {path: 'about', component:AboutComponent},
   {path: 'latest', component:LatestComponent},
   {path: 'login', component:LoginComponent},

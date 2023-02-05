@@ -1,17 +1,42 @@
-.grid {
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(10, minmax(100px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  justify-content: center;
+
+  max-width: 600px;
+  max-height: 450px;
+  margin:  auto;
 }
 
 .grid-item {
-  background-image: url('src/assets/images/x.png');
+
   background-size: cover;
+  background-position: center;
+  border: 1px solid black;
+  width: 250px;
+  height: 100px;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+
+.favorite-button {
+  background-image: url("src/assets/images/heart-regular.svg");
   background-repeat: no-repeat;
   background-position: center;
+  width: 30px;
+  height: 30px;
   border: none;
-  padding: 10px;
-  text-align: center;
-  width: 100px;
-  height: 200px;
+  cursor: pointer;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.favorite-button:hover {
+  background-image: url("src/assets/images/heart-regular.svg");
 }

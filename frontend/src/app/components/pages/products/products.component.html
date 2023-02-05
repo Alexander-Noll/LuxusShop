@@ -1,7 +1,5 @@
-
-<p>products works!</p>
-
-<div class="grid">
-  <div class="grid-item" *ngFor="let item of offers">{{ item.product }} <button>ik</button></div>
+<div class="grid-container">
+  <div *ngFor="let item of items" class="grid-item" [ngStyle]="{'background-image': 'url(./assets/images/' + item + ')'}">
+    <button class="favorite-button"></button>
+  </div>
 </div>
-

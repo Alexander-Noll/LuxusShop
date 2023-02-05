@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   constructor() { }
-  public offers: any[] = [];
+  public items: any[] = [];
   ngOnInit(): void {
-    for (let i = 0; i < 200; i++) {
-      this.offers.push({
-        product: 'cap',
-        state: 'in stock',
-        amount: 7,
-        price: i,
-      });
+    this.items = [
+      '1.jpg',
+      '2.jpg',
+
+    ];
+
+
     }
   }
 
-}
+

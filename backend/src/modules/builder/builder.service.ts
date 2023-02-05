@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import {  InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { filter } from 'rxjs';
 import { Item } from './items.schema';
 
 @Injectable()
@@ -23,12 +24,17 @@ export class BuilderService implements OnModuleInit {
   }
 
   async getProduct(id: string){
-    return  await this.buildEventModel.find({ tags: id }).exec();
+    
+    return  await this.buildEventModel.findOne({ productId : id  }).exec();
+  }
+
+  async deleteProduct(id: string){
+    return  await this.buildEventModel.findOneAndDelete({ productId : id }).exec();
   }
   async store(event: Item) {
     // filter searched for id if id is found it updates parameters
     const filter = { productId: event.productId };
-    return this.buildEventModel.findOneAndUpdate(filter, event, { upsert: true });
+    return this.buildEventModel.findOneAndUpdate(filter, event, { upsert: true }).exec();
   }
   async onModuleInit() {}
 }

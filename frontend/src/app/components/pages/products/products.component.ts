@@ -8,15 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   constructor() { }
-  public items: any[] = [];
-  ngOnInit(): void {
-    this.items = [
-      '1.jpg',
-      '2.jpg',
 
+  ngOnInit(): void {
+
+    }
+
+    items = [
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true},
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
+      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
+      // ...
     ];
 
-
+    onButtonClick(index: number) {
+      this.items[index].isSelected = !this.items[index].isSelected;
     }
   }
 

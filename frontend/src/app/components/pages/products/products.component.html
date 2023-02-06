@@ -1,5 +1,8 @@
-<div class="grid-container">
-  <div *ngFor="let item of items" class="grid-item" [ngStyle]="{'background-image': 'url(./assets/images/' + item + ')'}">
-    <button class="favorite-button"></button>
+<div class="grid">
+  <div *ngFor="let item of items" class="grid-item" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+    <button class="fav-btn" [ngClass]="{'selected': item.isSelected}" (click)="item.isSelected = !item.isSelected"></button>
+    <span *ngIf="item.isSale" class="sale-icon"></span>
   </div>
-</div>
+
+  </div>
+

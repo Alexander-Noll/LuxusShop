@@ -1,62 +1,97 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   loading = true;
-
 
   ngOnInit() {
     this.loadData().then(() => {
       this.loading = false;
     });
-
-    this.readProduct();
   }
-  items: any [] = [];
-  products: Object[] = [];
+
+  productIds: any[] = [];
+
+  items: any[] = [];
+
   async loadData() {
-    const apiUrl = 'http://localhost:3000/product/A32398101A1A1';
+    // Define the URL of the API endpoint that returns the products data
+    const apiUrl = 'http://localhost:3000/query/products';
+
     try {
+      // Make a GET request to the API endpoint
       const response: any = await this.http.get(apiUrl).toPromise();
+
+      // Check if the response is an object
       if (typeof response === 'object') {
-       // this.items.push({id :`./assets/products/${response.productId}.png`}) ;
-        this.items.push({id :`./assets/products/${response.productId}.png`, isSelected: true, isSale: true}) ;
-        console.log({id :`./assets/products/A32398101A1A1.png`});
+        // Map the response array to extract only the productId property
+        // and store the resulting array in the productIds property
+        this.productIds = response.map(
+          (item: { productId: any }) => item.productId
+        );
+        console.log(this.productIds);
       } else {
-        console.error("Unexpected response type:", response);
+        // If the response is not an object, log an error message
+        //console.error('Unexpected response type:', response);
       }
     } catch (error) {
-      console.error("Error loading data:", error);
+      // If there was an error making the API request, log an error message
+      console.error('Error loading data:', error);
     }
-}
 
-  onButtonClick(index: number) {
-   this.items[index].isSelected = !this.items[index].isSelected;
-  }
+    for (let i = 0; i < this.productIds.length; i++) {
+      try {
+        // Define the URL for the API endpoint that returns data for each product
+        const apiUrl =
+          'http://localhost:3000/query/product-' + this.productIds[i];
 
-  readProduct(){
+        // Make a GET request to the API endpoint
+        const response: any = await this.http.get(apiUrl).toPromise();
 
-    const fs = require('fs');
+        // Check if the response is an object
+        if (typeof response === 'object') {
+          // Log the URL of the API endpoint that returned the data
+          //console.log(
+          //  'http://localhost:3000/query/product-' + this.productIds[i]
+          // );
 
-    const directoryPath = './assets/products';
+          // Store the product data in an object
+          let product = {
+            productId: response.productId,
+            name: response.name,
+            type: response.type,
+            model: response.model,
+            brand: response.brand,
+            isSale: response.isSale,
+            imgId: response.imgId,
+            description: response.description,
+            amount: response.amount,
+            price: response.price,
+          };
 
-    fs.readdir(directoryPath, function (err: string, files: any[]) {
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
+          // Add the product object to the items array
+          this.items.push(product);
+
+          // Log the updated items array
+          // console.log(this.items);
+
+          // Log the productIds array
+          //console.log(this.productIds);
+        } else {
+          // If the response is not an object, log an error message
+          console.error('Unexpected response type:', response);
         }
-        files.forEach(function (file) {
-            console.log(file);
-        });
-    });
+      } catch (error) {
+        // If there was an error making the API request, log an error message
+        console.error('Error loading data:', error);
+      }
+    }
   }
 }
-
-

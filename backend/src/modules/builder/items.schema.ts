@@ -23,7 +23,7 @@ export class Item {
   isSale: boolean;
   // to add the correspsonding img
   @Prop({ required: true })
-  imgId: number;
+  imgId: string;
   // description
   @Prop({ required: true })
   description: string;
@@ -32,7 +32,7 @@ export class Item {
   amount: number;
   //price
   @Prop({ required: true })
-  price: number;
+  price: string;
 
 }
 

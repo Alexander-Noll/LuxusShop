@@ -1,11 +1,11 @@
 *{
-  margin: 0;
+
   padding: 0;
   font-family: 'poppins', sans-serif;
   box-sizing: border-box;
 }
 .hero{
-  background: #FD4556;
+  background: #2b2b2e    ;
   min-height: 10vh;
   width: 100%;
   color: #fff;
@@ -48,3 +48,15 @@ nav logo-img{
   outline: 0;
   cursor: pointer;
  }
+ .fav-btn {
+  background-image: url("src/assets/icons/favIconSelected.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+
+}
+#special{
+  margin: 200px;
+}

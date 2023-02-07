@@ -9,15 +9,19 @@ import { HeaderModule } from './components/header/header.module';
 import { AboutModule } from './components/pages/about/about.module';
 import { LoginModule } from './components/pages/login/login.module';
 import { LatestModule } from './components/pages/latest/latest.module';
+import { FavoriteComponent } from './components/pages/favorite/favorite.component';
+import { FavoriteModule } from './components/pages/favorite/favorite.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+
 
   ],
   imports: [
+    FavoriteModule,
     BrowserModule,
     AppRoutingModule,
     ProductsModule,

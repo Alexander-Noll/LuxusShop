@@ -3,31 +3,33 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  loading = true;
+  items: any[] = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.loadData().then(() => {
+      this.loading = false;
+    });
+  }
 
-    }
-
-    items = [
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true},
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:false },
-      { isSelected: false, imageUrl: './assets/images/watch.png', isSale:true },
-      // ...
-    ];
-
-    onButtonClick(index: number) {
-      this.items[index].isSelected = !this.items[index].isSelected;
+  async loadData() {
+    const itemsCount = 100;
+    this.items = [];
+    for (let i = 0; i < itemsCount; i++) {
+      this.items.push({
+        isSelected: false,
+        imageUrl: './assets/images/watch.png',
+        isSale: i % 2 === 0,
+      });
     }
   }
 
-
+  onButtonClick(index: number) {
+    this.items[index].isSelected = !this.items[index].isSelected;
+  }
+}

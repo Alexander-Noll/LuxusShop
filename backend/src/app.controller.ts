@@ -6,20 +6,16 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('/product/add')
+  @Post('/add')
   handleProduct(@Body() params: any){
     return this.appService.handleProduct(params);
   }
 
-  @Get('product/:id')
-  handleGetProduct(@Param('id') key: string) {
-    return this.appService.handleGetProduct(key);
+  @Get('query/:id')
+  handleQuery(@Param('id') key: string){
+    return this.appService.handleQuery(key);
   }
-  
-  @Get('product/delete/:id')
-  deleteProduct(@Param('id') key: string){
-    return this.appService.deleteProduct(key);
-  }
+
   @Get()
   getHello(): string {
     return this.appService.getHello();

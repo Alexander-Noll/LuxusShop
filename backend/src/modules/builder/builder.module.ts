@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BuilderService } from './builder.service';
 import { ItemsSchema } from './items.schema';
+import { ProductSchema } from './ProductSchema';
 
 
 @Module({
@@ -10,6 +11,7 @@ import { ItemsSchema } from './items.schema';
     HttpModule,
     MongooseModule.forFeature([
       { name: 'items', schema: ItemsSchema },
+ 
       
     ]),
   ],

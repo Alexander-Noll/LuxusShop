@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -16,6 +17,8 @@ constructor(private http: HttpClient) {}
     this.loadData().then(() => {
       this.loading = false;
     });
+
+    this.readProduct();
   }
   items: any [] = [];
   products: Object[] = [];
@@ -38,4 +41,22 @@ constructor(private http: HttpClient) {}
   onButtonClick(index: number) {
    this.items[index].isSelected = !this.items[index].isSelected;
   }
+
+  readProduct(){
+
+    const fs = require('fs');
+
+    const directoryPath = './assets/products';
+
+    fs.readdir(directoryPath, function (err: string, files: any[]) {
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        }
+        files.forEach(function (file) {
+            console.log(file);
+        });
+    });
+  }
 }
+
+

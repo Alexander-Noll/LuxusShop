@@ -1,39 +1,49 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import {  InjectModel } from '@nestjs/mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Item } from './items.schema';
+import { Product } from './ProductSchema';
 
 @Injectable()
 export class BuilderService implements OnModuleInit {
   constructor(
     private httpService: HttpService,
-    @InjectModel('items') private buildEventModel: Model<Item>,
-  ) {
-    
-    this.store({
-      product: 'Chronomat Automatic GMT 40',
-      description: "Die Chronomat Automatic GMT 40 ist Breitlings Verbeugung vor der Weltreise  nicht nur dank des Zifferblatts \n das zwei Zeitzonen anzeigt, \n sondern auch dank ihrer legeren Ästhetik. \n Das dezente Zusammenspiel von Zifferblättern sowie Gehäusen und Armbändern aus Edelstahl passt zu jeder Garderobe. \n Zugleich unterstreicht die Ton in Ton gehaltene 24-Stunden-Skala den roten GMT-Zeiger. \n Angetrieben wird die GMT-Komplikation vom Breitling-Kaliber 32. \n Dank der 24-Stunden-Skala kann der Nutzer eine zweite Zeitzone mitverfolgen und weiss auf Anhieb, \n ob es dort Tag oder Nacht ist, während die «Zwiebelkrone» (ein klassisches Merkmal der Chronomat, \n  das seinen Namen der geriffelten Kuppelform verdankt) einfache Einstellungen ermöglicht. \n  Als Allzweck-Sportuhr ist die GMT 40 in allen Universen von Breitling zu Hause – zu Land, \n  zu Wasser und in der Luft – und punktet mit einer beeindruckenden Wasserdichtigkeit bis 200 m.\n  Die Mission der Chronomat, «eine Uhr für alle Zwecke» zu sein, \n  ist dank der praktischen Grösse und des dezenten Stils der GMT 40 heute mehr denn je Realität. \n Robust genug fürs Fitnesscenter, doch auch mit der nötigen Eleganz für den Abendanzug – wenn es je eine Uhr zum Reisen gab, dann ist es diese.",
-      price : "5.550€",
-      amount : 1,
-      productId: "A32398101A1A1",
-      imgId : "10000",
-      isSale: true
-    });
-  
+    @InjectModel('items') private itemEventModel: Model<Item>,
+  ) {}
+
+  async getProduct(id: string) {
+    return await this.itemEventModel.findOne({ productId: id }).exec();
   }
 
-  async getProduct(id: string){
-    return  await this.buildEventModel.findOne({ productId : id  }).exec();
-  }
-
-  async deleteProduct(id: string){
-    return  await this.buildEventModel.findOneAndDelete({ productId : id }).exec();
+  async deleteProduct(id: string) {
+    return await this.itemEventModel.findOneAndDelete({ productId: id }).exec();
   }
   async store(event: Item) {
     // filter searched for id if id is found it updates parameters
     const filter = { productId: event.productId };
-    return this.buildEventModel.findOneAndUpdate(filter, event, { upsert: true }).exec();
+   
+    return await this.itemEventModel
+    .findOneAndUpdate(filter, event, { upsert: true })
+    .exec();
   }
-  async onModuleInit() {}
+
+  async getProducts() {
+    return await this.itemEventModel.find({}).select('productId').exec();
+  }
+  async onModuleInit() {
+    this.store({
+      productId: 'A24B23C22',
+      name: 'B01 42 Six Nations Italy ',
+      type: 'Watch',
+      model: 'Chronomat ',
+      brand: 'Breitling',
+      isSale: true,
+      imgId: 1000,
+      description:
+        'The Chronomat B01 42 Six Nations Italy is a luxury wristwatch from the Swiss brand Breitling. It is part of the Six Nations collection, which is inspired by international rugby, and is designed to pay tribute to the Italian national team. The watch features a 42mm case made of stainless steel and is powered by the Breitling in-house B01 movement, which is known for its accuracy and reliability. The watch also features a black dial with a 6-hour chronograph function, as well as a date display and a tachymeter scale. The watch is finished with a brown leather strap, which complements the overall design of the watch and gives it a classic, sophisticated look.',
+      amount: 1,
+      price: 8.8,
+    });
+  }
 }

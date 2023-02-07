@@ -20,6 +20,9 @@ export class Item {
 
   @Prop({ required: true })
   imgId: string;
+
+  @Prop({ required: true })
+  isSale: boolean;
 }
 
 export const ItemsSchema = SchemaFactory.createForClass(Item);

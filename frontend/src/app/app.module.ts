@@ -11,6 +11,7 @@ import { LoginModule } from './components/pages/login/login.module';
 import { LatestModule } from './components/pages/latest/latest.module';
 import { FavoriteComponent } from './components/pages/favorite/favorite.component';
 import { FavoriteModule } from './components/pages/favorite/favorite.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FavoriteModule } from './components/pages/favorite/favorite.module';
     AboutModule,
     LoginModule,
     LatestModule,
+    HttpClientModule
 
     ],
   providers: [],

@@ -1,16 +1,19 @@
-<link rel="header.component.css" href="stylesheet">
+<link rel="stylesheet" href="header.component.css">
+
 <div class="hero">
   <nav>
-    <img src="assets/images/menu.png" class="menu-img" />
-    <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo-img" /></a>
+    <img src="assets/images/menu.png" class="menu-img">
+    <a [routerLink]="['']">
+      <img src="assets/images/logo.png" alt="logo-img">
+    </a>
     <ul>
       <li><a [routerLink]="['/products']">Products</a></li>
       <li><a [routerLink]="['/latest']">Latest</a></li>
       <li><a [routerLink]="['/login']">Login</a></li>
       <li><a [routerLink]="['/about']">About</a></li>
-      <li class="special"><a [routerLink]="['/wishlist']" >Wishlist</a></li>
+      <li class="special">
+        <a [routerLink]="['/wishlist']">Wishlist</a>
+      </li>
     </ul>
-
   </nav>
 </div>
-

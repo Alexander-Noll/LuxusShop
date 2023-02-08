@@ -5,9 +5,13 @@
   max-width: 600px;
   max-height: 450px;
   margin: auto;
-}
+  background: transparent;
+  padding: 40px;
+  border-radius: 10px;
 
-.grid-item {
+  }
+
+  .grid-item {
   width: 250px;
   height: 400px;
   position: relative;
@@ -17,46 +21,47 @@
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 10px;
-}
+  background: transparent;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
 
-.grid-item-img {
+  .grid-item-img {
   background-size: cover;
   background-position: center;
-  background-color:   	#F8F8F8;
+  background-color: #333;
   border: none;
   width: 100%;
   height: 70%;
-}
+  }
 
-.grid-item-header {
-  font-family: "poppins", sans-serif;
+  .grid-item-header {
+  font-family: "Poppins", sans-serif;
   width: 100%;
   height: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color:   	#F8F8F8;
-}
+  background: #fff;
+  }
 
-.grid-item h3 {
-
+  .grid-item h3 {
+  color: #fff;
   margin: 0;
   text-align: center;
   font-size: 16px;
-}
+  }
 
-.grid-item h4 {
+  .grid-item h4,
+  .grid-item h5 {
+  color: #fff;
   margin: 0;
   text-align: center;
   font-size: 14px;
-}
-.grid-item h5 {
-  margin: 0;
-  text-align: center;
-  font-size: 14px;
-}
-.fav-btn {
+  }
+
+  .fav-btn {
   background-image: url("src/assets/icons/favIconSelected.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -70,15 +75,17 @@
   top: 0;
   right: 0;
   margin: 10px;
-}
+  }
 
-.fav-btn.selected {
+  .fav-btn.selected {
   background-image: url("src/assets/icons/favIcon.svg");
-}
-.fav-btn:not(.selected) {
+  }
+
+  .fav-btn:not(.selected) {
   background-image: url("src/assets/icons/favIconSelected.svg");
-}
-.sale-icon {
+  }
+
+  .sale-icon {
   background-image: url("src/assets/icons/sale.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -89,4 +96,4 @@
   top: 0;
   left: 10px;
   margin: 5px;
-}
+  }

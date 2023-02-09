@@ -1,19 +1,15 @@
-<link rel="stylesheet" href="header.component.css">
-
-<div class="hero">
+<header class="header" [ngClass]="{'collapsed': isCollapsed}">
+  <div class="header-logo">Your Logo</div>
   <nav>
-    <img src="assets/images/menu.png" class="menu-img">
-    <a [routerLink]="['']">
-      <img src="assets/images/logo.png" alt="logo-img">
-    </a>
-    <ul>
-      <li><a [routerLink]="['/products']">Products</a></li>
-      <li><a [routerLink]="['/latest']">Latest</a></li>
-      <li><a [routerLink]="['/login']">Login</a></li>
-      <li><a [routerLink]="['/about']">About</a></li>
-      <li class="special">
-        <a [routerLink]="['/wishlist']">Wishlist</a>
-      </li>
+    <ul class="header-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
-</div>
+  <div class="header-cart">
+    <i class="fa fa-shopping-cart"></i>
+    <span>Cart (0)</span>
+  </div>
+</header>

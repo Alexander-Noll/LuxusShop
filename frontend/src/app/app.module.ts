@@ -12,6 +12,7 @@ import { LatestModule } from './components/pages/latest/latest.module';
 import { FavoriteComponent } from './components/pages/favorite/favorite.component';
 import { FavoriteModule } from './components/pages/favorite/favorite.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutModule,
     LoginModule,
     LatestModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbCollapseModule
 
     ],
   providers: [],

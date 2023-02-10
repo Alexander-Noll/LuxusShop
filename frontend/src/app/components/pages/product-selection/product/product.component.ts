@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
-  loading = true;
+  loading = false;
 
   ngOnInit() {
-    this.loadData().then(() => {
-      this.loading = false;
-    });
+    this.loadData();
+    console.log('ngOnInit called');
   }
 
   productIds: any[] = [];
@@ -24,6 +23,7 @@ export class ProductsComponent implements OnInit {
   async loadData() {
     // Define the URL of the API endpoint that returns the products data
     const apiUrl = 'http://localhost:3000/query/products';
+    console.log("olal");
 
     try {
       // Make a GET request to the API endpoint
@@ -95,3 +95,5 @@ export class ProductsComponent implements OnInit {
     }
   }
 }
+
+

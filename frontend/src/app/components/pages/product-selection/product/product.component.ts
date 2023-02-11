@@ -1,25 +1,54 @@
 import { Component, OnInit } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
+
+
+
 export class ProductComponent implements OnInit {
+  sliderValue: any;
+
   constructor(private http: HttpClient) {}
 
+  price = 0;
   loading = false;
+
+  isFilterOpen: boolean = false;
+
+   labelText(){
+
+
+   }
+   valueChanged(e: any) {
+    let get = document.getElementById('label1')
+    if(get != null){    get.innerHTML= e.target.value + "$";}
+    console.log();
+}
 
   ngOnInit() {
     this.loadData();
     console.log('ngOnInit called');
+
+
   }
 
+  toggleFilter(): void {
+    this.isFilterOpen = !this.isFilterOpen;
+  };
   productIds: any[] = [];
 
   items: any[] = [];
 
+  async updateTextInput(text: number){
+    this.price = text;
+    return this.price;
+  }
   async loadData() {
     // Define the URL of the API endpoint that returns the products data
     const apiUrl = 'http://localhost:3000/query/products';

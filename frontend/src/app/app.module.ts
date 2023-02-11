@@ -15,6 +15,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductSelectionRoutingModule } from './components/pages/product-selection/product-selection-routing.module';
 import { ProductSelectionModule } from './components/pages/product-selection/product-selection.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { ProductSelectionModule } from './components/pages/product-selection/pro
     LatestModule,
     HttpClientModule,
     NgbCollapseModule,
-
+    FormsModule
     ],
   providers: [],
   bootstrap: [AppComponent],

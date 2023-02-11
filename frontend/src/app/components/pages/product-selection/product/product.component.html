@@ -59,9 +59,11 @@
     <div class="filter-group">
       <h3>Price</h3>
       <div class="price-slider-container">
-        <input type="range" min="0" max="100000" value="0" class="price-slider">
         <span class="price-range-label">$0</span>
-        <span class="price-range-label price-range-label-right">$100,000</span>
+        <input type="range" min="0" max="10000" value="30" (input)="valueChanged($event)">
+
+        <span class="price-range-label price-range-label-right"> <label id="label1">{{sliderValue}}</label></span>
+
       </div>
     </div>
   </div>

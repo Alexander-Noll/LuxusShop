@@ -1,17 +1,88 @@
-<div class="grid">
-  <div *ngFor="let item of items" class="grid-item">
-    <div class="grid-item-img" [ngStyle]="{ 'background-image': 'url(' + item.imgId + ')' }">
-      <button
-        class="fav-btn"
-        [ngClass]="{ selected: item.isSelected }"
-        (click)="item.isSelected = !item.isSelected"
-      ></button>
-      <span *ngIf="item.isSale" class="sale-icon"></span>
+<div class="filter-container">
+  <div class="filter-section">
+    <h2>Filter</h2>
+    <div class="filter-group">
+      <h3>Brand</h3>
+      <ul>
+        <li>
+          <input type="checkbox" id="brand-1" />
+          <label for="brand-1">Brand 1</label>
+        </li>
+        <li>
+          <input type="checkbox" id="brand-2" />
+          <label for="brand-2">Brand 2</label>
+        </li>
+        <li>
+          <input type="checkbox" id="brand-3" />
+          <label for="brand-3">Brand 3</label>
+        </li>
+      </ul>
     </div>
-    <div class="grid-item-header">
-      <h3 style="font-size: 12px; color: #555">{{ item.productId }}</h3>
-      <h4 style=" color: #555">{{ item.name }}</h4>
-      <h5  style="font-size: 12px; color: #555">{{ item.price}}</h5>
+    <div class="filter-group">
+      <h3>Color</h3>
+      <ul>
+        <li>
+          <input type="checkbox" id="color-1" />
+          <label for="color-1">Color 1</label>
+        </li>
+        <li>
+          <input type="checkbox" id="color-2" />
+          <label for="color-2">Color 2</label>
+        </li>
+        <li>
+          <input type="checkbox" id="color-3" />
+          <label for="color-3">Color 3</label>
+        </li>
+      </ul>
+    </div>
+    <div class="filter-group">
+      <h3>Item Type</h3>
+      <ul>
+        <li>
+          <input type="checkbox" id="item-type-1" />
+          <label for="item-type-1">Bracelet</label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-type-2" />
+          <label for="item-type-2">Ring</label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-type-3" />
+          <label for="item-type-3">Earring</label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-type-4" />
+          <label for="item-type-4">Chain</label>
+        </li>
+      </ul>
+    </div>
+    <div class="filter-group">
+      <h3>Price</h3>
+      <div class="price-slider-container">
+        <input type="range" min="0" max="100000" value="0" class="price-slider">
+        <span class="price-range-label">$0</span>
+        <span class="price-range-label price-range-label-right">$100,000</span>
+      </div>
     </div>
   </div>
+
+</div>
+<!-- Adding the grid container -->
+<div class="grid">
+<!-- Using *ngFor directive to loop through filtered items -->
+<div *ngFor="let item of items" class="grid-item">
+  <div class="grid-item-img" [ngStyle]="{ 'background-image': 'url(' + item.imgId + ')' }">
+    <button
+      class="fav-btn"
+      [ngClass]="{ selected: item.isSelected }"
+      (click)="item.isSelected = !item.isSelected"
+    ></button>
+    <span *ngIf="item.isSale" class="sale-icon"></span>
+  </div>
+  <div class="grid-item-header">
+    <h3 style="font-size: 12px; color: #555">{{ item.productId }}</h3>
+    <h4 style=" color: #555">{{ item.name }}</h4>
+    <h5 style="font-size: 12px; color: #555">{{ item.price}}</h5>
+  </div>
+</div>
 </div>

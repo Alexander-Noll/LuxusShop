@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { FilterService } from 'src/app/services/filter.service';
 
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
+
 })
 
 
@@ -15,7 +17,7 @@ import { FilterService } from 'src/app/services/filter.service';
 export class ProductComponent implements OnInit {
   sliderValue: any;
 
-  constructor(private http: HttpClient, ) {}
+  constructor(private http: HttpClient,private filter:FilterService ) {}
 
   price = 0;
   loading = false;
@@ -34,7 +36,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    console.log('ngOnInit called');
+    console.log(this.filter.instanceId);
 
 
   }

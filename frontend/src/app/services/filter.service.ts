@@ -9,6 +9,8 @@ export class FilterService {
   public instanceId: number = Math.random();
 
   constructor() { }
-
+  ngOnInit(): void {
+    console.log(this.instanceId);
+  }
 
 }

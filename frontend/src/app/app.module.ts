@@ -16,7 +16,9 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductSelectionRoutingModule } from './components/pages/product-selection/product-selection-routing.module';
 import { ProductSelectionModule } from './components/pages/product-selection/product-selection.module';
 import { FormsModule } from '@angular/forms';
-import { FilterService } from './services/filter.service';
+import { FilterService } from 'src/app/services/filter.service';
+
+
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { FilterService } from './services/filter.service';
     NgbCollapseModule,
     FormsModule
     ],
-  providers: [FilterService],
+    providers: [FilterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

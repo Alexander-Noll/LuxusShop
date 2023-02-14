@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+
 import { AboutComponent } from './about.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+
     ReactiveFormsModule
   ]
 })

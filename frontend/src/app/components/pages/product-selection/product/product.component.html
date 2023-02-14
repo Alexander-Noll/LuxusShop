@@ -5,7 +5,9 @@
       <h3>Brand</h3>
       <ul>
         <li>
-          <input type="checkbox" id="brand-1" />
+          <input type="checkbox" id="brand-1"  type="checkbox"
+          [checked]="isChecked"
+          (change)="onChange($event)"  />
           <label for="brand-1">Brand 1</label>
         </li>
         <li>
@@ -60,7 +62,7 @@
       <h3>Price</h3>
       <div class="price-slider-container">
         <span class="price-range-label">$0</span>
-        <input type="range" min="0" max="10000" value="30" (input)="valueChanged($event)">
+        <input type="range" min="0" max="10000" value="30" (input)="sliderValueChanged($event)">
 
         <span class="price-range-label price-range-label-right"> <label id="label1">{{sliderValue}}</label></span>
 

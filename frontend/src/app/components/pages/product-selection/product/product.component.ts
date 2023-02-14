@@ -3,59 +3,65 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FilterService } from 'src/app/services/filter.service';
 
-
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
-
 })
-
-
-
 export class ProductComponent implements OnInit {
   sliderValue: any;
 
-  constructor(private http: HttpClient,private filter:FilterService ) {}
+  constructor(private http: HttpClient, private filter: FilterService) {}
 
   price = 0;
-  loading = false;
 
-  isFilterOpen: boolean = false;
-
-   labelText(){
-
-
-   }
-   valueChanged(e: any) {
-    let get = document.getElementById('label1')
-    if(get != null){    get.innerHTML= e.target.value + "$";}
-    console.log();
-}
-
-  ngOnInit() {
-    this.loadData();
-    console.log(this.filter.instanceId);
-
-
-  }
-
-  toggleFilter(): void {
-    this.isFilterOpen = !this.isFilterOpen;
-  };
   productIds: any[] = [];
 
   items: any[] = [];
 
-  async updateTextInput(text: number){
+  isChecked: boolean = false;
+
+
+
+  onChange(event: any) {
+    // Get the checked property of the checkbox
+    const isChecked = event.target.checked;
+    // Update the isChecked property
+    this.isChecked = isChecked;
+    // Do something with the checked property
+    if (isChecked) {
+      this.filter.updateFilter('man', true);
+      console.log(this.filter.getFilter());
+    } else {
+      this.filter.deleteFilter('man');
+      console.log(this.filter.getFilter());
+    }
+  }
+
+
+  sliderValueChanged(e: any) {
+    let get = document.getElementById('label1');
+    if (get != null) {
+      get.innerHTML = e.target.value + '$';
+    }
+    console.log();
+  }
+
+
+  ngOnInit() {
+    this.loadData();
+    console.log(this.filter.instanceId);
+  }
+
+  async updateTextInput(text: number) {
     this.price = text;
     return this.price;
   }
+
   async loadData() {
     // Define the URL of the API endpoint that returns the products data
     const apiUrl = 'http://localhost:3000/query/products';
-    console.log("olal");
+    console.log('olal');
 
     try {
       // Make a GET request to the API endpoint
@@ -127,5 +133,3 @@ export class ProductComponent implements OnInit {
     }
   }
 }
-
-

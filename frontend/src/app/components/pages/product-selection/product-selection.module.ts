@@ -5,6 +5,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductSelectionComponent } from './product-selection.component';
 import { ProductComponent } from './product/product.component';
+import { FilterService } from 'src/app/services/filter.service';
 
 
 
@@ -18,6 +19,7 @@ import { ProductComponent } from './product/product.component';
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [FilterService],
 })
 export class ProductSelectionModule { }

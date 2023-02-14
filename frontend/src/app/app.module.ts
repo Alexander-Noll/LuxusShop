@@ -16,11 +16,13 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductSelectionRoutingModule } from './components/pages/product-selection/product-selection-routing.module';
 import { ProductSelectionModule } from './components/pages/product-selection/product-selection.module';
 import { FormsModule } from '@angular/forms';
+import { FilterService } from './services/filter.service';
 
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
+
     FavoriteModule,
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     NgbCollapseModule,
     FormsModule
     ],
-  providers: [],
+  providers: [FilterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

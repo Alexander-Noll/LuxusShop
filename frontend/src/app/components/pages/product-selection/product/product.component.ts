@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { FilterService } from 'src/app/services/filter.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductComponent implements OnInit {
   sliderValue: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, ) {}
 
   price = 0;
   loading = false;

@@ -1,23 +1,18 @@
 <div class="filter-container">
   <app-filter (filterChanged)="onChange()"></app-filter>
-
 </div>
 <!-- Adding the grid container -->
 <div class="grid">
 <!-- Using *ngFor directive to loop through filtered items -->
 <div *ngFor="let item of items" class="grid-item">
   <div class="grid-item-img" [ngStyle]="{ 'background-image': 'url(' + item.imgId + ')' }">
-    <button
-      class="fav-btn"
-      [ngClass]="{ selected: item.isSelected }"
-      (click)="item.isSelected = !item.isSelected"
-    ></button>
+    <button class="fav-btn" [ngClass]="{ selected: item.isSelected }" (click)="item.isSelected = !item.isSelected"></button>
     <span *ngIf="item.isSale" class="sale-icon"></span>
   </div>
   <div class="grid-item-header">
     <h3 style="font-size: 12px; color: #555">{{ item.productId }}</h3>
-    <h4 style=" color: #555">{{ item.name }}</h4>
-    <h5 style="font-size: 12px; color: #555">{{ item.price}}</h5>
+    <h3 style=" color: #555">{{ item.name }}</h3>
+    <h3 style="font-size: 12px; color: #555">{{ item.price}}</h3>
   </div>
 </div>
 </div>

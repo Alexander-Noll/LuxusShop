@@ -10,6 +10,13 @@ export class AppService {
   async handleGetProduct(key: any) {
     return await this.modelBuilderService.getProduct(key);
   }
+
+  //product/watch
+  //product/bracelt
+  //product/ring
+  //product/earring
+  //product/chain
+  
   async handleQuery(key: string) {
     if (key.startsWith('delete-')) {
       const name = key.substring('delete-'.length);

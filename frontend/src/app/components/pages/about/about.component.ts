@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterService } from 'src/app/services/filter.service';
+
 
 
 @Component({
@@ -10,10 +10,10 @@ import { FilterService } from 'src/app/services/filter.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private filter:FilterService) {  }
+  constructor() {  }
 
   ngOnInit(): void {
-    console.log(this.filter);
+
   }
 
 }

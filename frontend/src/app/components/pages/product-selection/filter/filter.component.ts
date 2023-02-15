@@ -1,35 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { FilterService } from 'src/app/services/filter.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent implements OnInit {
-  checkBoxes: boolean[] = [false, false, false, false, false];
   price = 0;
   sliderValue: any;
 
-  constructor(private filter:FilterService) { }
+  constructor(private products: ProductService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+  @Output() filterChanged = new EventEmitter<boolean>();
 
-  onChange(event: any, index: number) {
+  async onChange(event: any) {
     // Get the checked property of the checkbox
     const isChecked = event.target.checked;
-
     // Update the state of the corresponding checkbox
-    this.checkBoxes[index] = isChecked;
-
     // Do something with the checked property
     if (isChecked) {
-      this.filter.updateFilter(event.target.id, true);
-      console.log(this.filter.getFilter());
+      await this.products.loadProductData(event.target.id, isChecked);
+      this.filterChanged.emit(event.target.checked);
     } else {
-      this.filter.updateFilter(event.target.id, false);
-      console.log(this.filter.getFilter());
+      await this.products.loadProductData(event.target.id, isChecked);
+      // its important the the emit gets send after the service hat time to store the new data
+      this.filterChanged.emit(event.target.checked);
     }
   }
 
@@ -45,5 +43,4 @@ export class FilterComponent implements OnInit {
     this.price = text;
     return this.price;
   }
-
 }

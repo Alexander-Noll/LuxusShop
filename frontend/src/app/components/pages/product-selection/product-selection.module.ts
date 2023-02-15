@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductSelectionComponent } from './product-selection.component';
 import { ProductComponent } from './product/product.component';
 import { RouterModule } from '@angular/router';
+import { FilterComponent } from './filter/filter.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
    ProductSelectionComponent,
-   ProductComponent
+   ProductComponent,
+   FilterComponent
   ],
   imports: [
     CommonModule,

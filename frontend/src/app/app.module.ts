@@ -17,6 +17,7 @@ import { ProductSelectionRoutingModule } from './components/pages/product-select
 import { ProductSelectionModule } from './components/pages/product-selection/product-selection.module';
 import { FormsModule } from '@angular/forms';
 import { FilterService } from 'src/app/services/filter.service';
+import { ProductService } from './services/product.service';
 
 
 
@@ -38,7 +39,7 @@ import { FilterService } from 'src/app/services/filter.service';
     NgbCollapseModule,
     FormsModule
     ],
-    providers: [FilterService],
+    providers: [FilterService,ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

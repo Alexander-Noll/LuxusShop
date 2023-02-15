@@ -9,7 +9,7 @@ export class FilterService {
   public filter: any[] = [
     { man: false },
     { woman: false },
-    { bracelett: false },
+    { bracelet: false },
     { ring: false },
     { earring: false },
     { red: false },

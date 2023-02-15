@@ -14,30 +14,31 @@ export class ProductComponent implements OnInit {
   constructor(private http: HttpClient, private filter: FilterService) {}
 
   price = 0;
-
   productIds: any[] = [];
-
   items: any[] = [];
+  checkBoxes: boolean[] = [false, false, false, false, false];
 
-  isChecked: boolean = false;
+  ngOnInit() {
+    this.loadData();
+    console.log(this.filter.instanceId);
+  }
 
-
-
-  onChange(event: any) {
+  onChange(event: any, index: number) {
     // Get the checked property of the checkbox
     const isChecked = event.target.checked;
-    // Update the isChecked property
-    this.isChecked = isChecked;
+
+    // Update the state of the corresponding checkbox
+    this.checkBoxes[index] = isChecked;
+
     // Do something with the checked property
     if (isChecked) {
-      this.filter.updateFilter('man', true);
+      this.filter.updateFilter(event.target.id, true);
       console.log(this.filter.getFilter());
     } else {
-      this.filter.deleteFilter('man');
+      this.filter.updateFilter(event.target.id, false);
       console.log(this.filter.getFilter());
     }
   }
-
 
   sliderValueChanged(e: any) {
     let get = document.getElementById('label1');
@@ -45,12 +46,6 @@ export class ProductComponent implements OnInit {
       get.innerHTML = e.target.value + '$';
     }
     console.log();
-  }
-
-
-  ngOnInit() {
-    this.loadData();
-    console.log(this.filter.instanceId);
   }
 
   async updateTextInput(text: number) {

@@ -9,7 +9,7 @@
 }
 
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -21,9 +21,7 @@
   margin: 0 auto;
 }
 
-header.collapsed {
-  transform: translateY(-100%);
-}
+
 
 .header-logo {
   font-family: "Poppins", sans-serif;

@@ -1,31 +1,28 @@
-<div class="filter-section">
-  <div class="filter-group">
-    <h3>Brand</h3>
+<div class="dropdown">
+  <div class="dropbtn">Item Type
+  <div class="dropdown-content">
     <ul>
-      <li><input type="checkbox" id="watch" (change)="onChange($event)" /><label for="brand-1">Watch</label></li>
-      <li><input type="checkbox" id="brand-2" (change)="onChange($event)" /><label for="brand-2">Brand 2</label></li>
-      <li><input type="checkbox" id="brand-3" (change)="onChange($event)" /><label for="brand-3">Brand 3</label></li>
-    </ul>
-    <h3>Color</h3>
-    <ul>
-      <li><input type="checkbox" id="color-1" (change)="onChange($event)" /><label for="color-1">Color 1</label></li>
-      <li><input type="checkbox" id="color-2" (change)="onChange($event)" /><label for="color-2">Color 2</label></li>
-      <li><input type="checkbox" id="color-3" (change)="onChange($event)" /><label for="color-3">Color 3</label></li>
-    </ul>
-    <h3>Item Type</h3>
-    <ul>
-      <li><input type="checkbox" id="bracelet" (change)="onChange($event)" /><label for="item-type-1">Bracelet</label></li>
-      <li><input type="checkbox" id="ring" (change)="onChange($event)" /><label for="item-type-2">Ring</label></li>
-      <li><input type="checkbox" id="earring" (change)="onChange($event)" /><label for="item-type-3">Earring</label></li>
-      <li><input type="checkbox" id="chain" (change)="onChange($event)" /><label for="item-type-4">Chain</label></li>
-      <li><input type="checkbox" id="watch" (change)="onChange($event)" /> <label for="item-type-4">Watch</label></li>
+      <li><input type="checkbox" id="bracelet" (change)="onChange($event)" /><label for="bracelet">Bracelet</label></li>
+      <li><input type="checkbox" id="ring" (change)="onChange($event)" /><label for="ring">Ring</label></li>
+      <li><input type="checkbox" id="earring" (change)="onChange($event)" /><label for="earring">Earring</label></li>
+      <li><input type="checkbox" id="chain" (change)="onChange($event)" /><label for="chain">Chain</label></li>
+      <li><input type="checkbox" id="watch" (change)="onChange($event)" /> <label for="watch">Watch</label></li>
     </ul>
   </div>
+  </div>
+</div>
 
-  <h3>Price</h3>
-  <div class="price-slider-container">
-    <span class="price-range-label">$0</span>
-    <input type="range" min="0" max="10000" value="30" (input)="sliderValueChanged($event)"/>
-    <span class="price-range-label price-range-label-right"><label id="label1">{{ sliderValue }}</label></span>
+
+<div class="dropdown">
+  <div class="dropbtn">Item Type
+  <div class="dropdown-content">
+    <ul>
+      <li><input type="checkbox" id="bracelet" (change)="onChange($event)" /><label for="bracelet">Bracelet</label></li>
+      <li><input type="checkbox" id="ring" (change)="onChange($event)" /><label for="ring">Ring</label></li>
+      <li><input type="checkbox" id="earring" (change)="onChange($event)" /><label for="earring">Earring</label></li>
+      <li><input type="checkbox" id="chain" (change)="onChange($event)" /><label for="chain">Chain</label></li>
+      <li><input type="checkbox" id="watch" (change)="onChange($event)" /> <label for="watch">Watch</label></li>
+    </ul>
+  </div>
   </div>
 </div>

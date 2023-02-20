@@ -8,13 +8,15 @@ import { Component, HostListener, OnInit } from '@angular/core';
 
 })
 export class HeaderComponent implements OnInit {
-  isCollapsed = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  @HostListener('window:scroll', [])
+
+  /*isCollapsed = false;
   onWindowScroll() {
     this.isCollapsed = window.pageYOffset > 60;
   }
+  */
 }

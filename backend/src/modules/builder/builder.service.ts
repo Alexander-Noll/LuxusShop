@@ -12,6 +12,13 @@ export class BuilderService implements OnModuleInit {
     @InjectModel('items') private itemEventModel: Model<Item>,
   ) {}
 
+
+
+
+  async handleFilterRequest(brands: string[], types: string[]){
+    console.log(await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec(),"dfb")
+    
+  }
   async getProduct(key: string) {
     console.log(key)
     return await this.itemEventModel.find({ type: key }).exec();
@@ -24,13 +31,22 @@ export class BuilderService implements OnModuleInit {
     // filter searched for id if id is found it updates parameters
     const filter = { productId: event.productId };
 
-    return await this.itemEventModel
+    await this.itemEventModel
       .findOneAndUpdate(filter, event, { upsert: true })
       .exec();
+    return 'stored';
   }
 
   async getProducts() {
     return await this.itemEventModel.find({}).select('productId').exec();
+  }
+
+
+  async findAllByBrandAndType(brands: string[], types: string[]): Promise<Product[]> {
+    return this.itemEventModel.find({
+      brand: { $in: brands },
+      type: { $in: types }
+    }).exec();
   }
   async onModuleInit() {
     this.store({

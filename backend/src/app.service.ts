@@ -11,45 +11,12 @@ export class AppService {
     return await this.modelBuilderService.getProduct(key);
   }
 
-  //product/watch
-  //product/bracelt
-  //product/ring
-  //product/earring
-  //product/chain
+ 
   
-  async handleQuery(key: string) {
-    if (key.startsWith('delete-')) {
-      const name = key.substring('delete-'.length);
-      return await this.modelBuilderService.deleteProduct(name);
-    }
+ async handleFilterRequest(brands: string[], types: string[])  {
+  return await this.modelBuilderService.handleFilterRequest(brands,types);
   
-    if (key.startsWith('product-')) {
-      const name = key.substring('product-'.length);
-      return await this.modelBuilderService.getProduct(name);
-    }
-
-    if (key=== 'watch') {
-      return await this.modelBuilderService.getProduct(key);
-    }
-    if (key=== 'bracelet') {
-      return await this.modelBuilderService.getProduct(key);
-    }
-    if (key=== 'chain'){
-      return await this.modelBuilderService.getProduct(key);
-    }
-    if (key==='earring') {
-      return await this.modelBuilderService.getProduct(key);
-    }
-    if (key==='ring') {
-      return await this.modelBuilderService.getProduct(key);
-    }
-    if(key === 'hallo'){
-      return "hallo";
-    }
-  }
-  async deleteProduct(key: any) {
-    return await this.modelBuilderService.deleteProduct(key);
-  }
+ }
   getHello(): string {
     return 'Hello World!';
   }

@@ -19,7 +19,8 @@ export class ProductComponent implements OnInit {
   ngOnInit() {}
 
   async onChange() {
-   this.items = this.productService.getSelectedProducts();
+    this.items = this.productService.getProducts();
+    console.log(this.items)
   }
 
   async loadData() {}

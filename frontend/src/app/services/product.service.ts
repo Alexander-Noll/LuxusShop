@@ -35,30 +35,22 @@ export class ProductService {
       }
     }
 
-    this.sendFilters();
-  }
+    const response = await fetch(this.apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.filters)
+    });
 
+    if (response.ok) {
+      const data = await response.json(); // Parse response data as JSON
+      this.productList = data // Log the parsed data
+    }
+  }
   async sendFilters() {
 
-    const headers = { 'content-type': 'application/json'}
-    const body=JSON.stringify(this.filters);
-
-    const rep: any = await this.http.post(this.apiUrl,body,{'headers':headers})
-    console.log(rep)
-    if (rep.ok) {
-
-      if (Array.isArray(rep)) {
-
-      for (const product of rep) {
-        this.productList.push(product);
-      }
-    }
-    }
-
-    console.log(this.productList)
-    return;
   }
-
 
   getProducts(){
 

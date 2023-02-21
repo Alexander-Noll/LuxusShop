@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
 
   async onChange() {
     this.items = this.productService.getProducts();
-    console.log(this.items)
+    console.log(this.items,"product component")
   }
 
   async loadData() {}

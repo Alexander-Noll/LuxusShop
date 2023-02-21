@@ -15,11 +15,15 @@ export class AppController {
 
  @Post('/filter')
   async handleFilterRequest(@Body() filters: any) {
-    console.log(this.appService.handleFilterRequest(filters.brand,filters.product));
+    const response = await this.appService.handleFilterRequest(filters.brand,filters.product);
+    console.log(response)
+    return response;
    
   }
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get("/test")
+  async test() {
+    
+    console.log(await this.appService.handleGetProduct("Watch"));
+   return ;
   }
 }

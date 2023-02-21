@@ -16,7 +16,9 @@ export class BuilderService implements OnModuleInit {
 
 
   async handleFilterRequest(brands: string[], types: string[]){
-    console.log(await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec(),"dfb")
+    const response = await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec()
+    console.log(response)
+    return response;
     
   }
   async getProduct(key: string) {

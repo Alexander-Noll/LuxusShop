@@ -17,20 +17,18 @@ export class ProductComponent implements OnInit {
   checkBoxes: boolean[] = [false, false, false, false, false];
 
   async ngOnInit() {
-    await this.productService.loadAllProducts();
-    this.items = this.productService.getAllLoadedProducts();
+    this.items = await this.productService.getAllLoadedProducts();
   }
 
   async onChange() {
 
     const items = this.productService.getProducts();
     if(items.length === 0){
-      this.items = this.productService.getAllLoadedProducts();
+      this.items = await this.productService.getAllLoadedProducts();
     }
     else{
       this.items = this.productService.getProducts();
     }
-
   }
 
   async loadData() {}

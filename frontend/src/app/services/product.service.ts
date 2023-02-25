@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadAllProducts();
+  }
 
   private apiUrl = 'http://localhost:3000/filter';
 
@@ -13,6 +15,8 @@ export class ProductService {
 
   private productList: any[] = []
   private storedProductList : any[] = []
+
+
 
  async updateFilter(key: string, isChecked: boolean, type: string) {
     if (type === 'product') {
@@ -66,8 +70,15 @@ export class ProductService {
 
     }
   }
-  getAllLoadedProducts(){
-    return this.storedProductList
+  async getAllLoadedProducts(){
+    if(this.storedProductList.length !== 0){
+      return this.storedProductList;
+    }
+    else{
+      await this.loadAllProducts()
+      return this.storedProductList;
+    }
+
   }
 
   getProducts(){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import * as bcrypt from 'bcrypt';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,14 +17,13 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  onSubmit(): void {
+  submit() {
     // Generate a random salt value using bcrypt
 
-    const salt = bcrypt.genSaltSync(10);
+    const encryptedUsername = CryptoJS.AES.encrypt(this.username, 'secret key');
+    const encryptedPassword = CryptoJS.AES.encrypt(this.password, 'secret key');
 
-    // Hash the password with the salt using bcrypt
-    const hashedPassword = bcrypt.hashSync(this.password, salt);
-
+    console.log(encryptedPassword)
     // Save the username, hashed password, and salt in the database
     // You can use a backend API to do this using HTTP requests or a library like Mongoose
   }

@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { type } from 'os';
 import { Item } from './items.schema';
 import { Product } from './ProductSchema';
 
@@ -12,14 +13,27 @@ export class BuilderService implements OnModuleInit {
     @InjectModel('items') private itemEventModel: Model<Item>,
   ) {}
 
-
+  async getAllProducts(){
+    const response = await this.itemEventModel.find().exec()
+    return response;
+  }
 
 
   async handleFilterRequest(brands: string[], types: string[]){
-    const response = await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec()
-    console.log(response)
-    return response;
-    
+
+  
+    if(brands.length === 0){
+      const response = await this.itemEventModel.find({type: { $in: types  }}).exec()
+      return response;
+    }
+    if(types.length === 0){
+      const response = await this.itemEventModel.find({brand: { $in: brands  }}).exec()
+      return response;
+    }
+    else{
+      const response = await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec()
+      return response;
+    }
   }
   async getProduct(key: string) {
     console.log(key)

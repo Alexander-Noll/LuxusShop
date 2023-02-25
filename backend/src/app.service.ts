@@ -17,6 +17,9 @@ export class AppService {
   return await this.modelBuilderService.handleFilterRequest(brands,types);
   
  }
+ async getAllProducts(){
+  return await this.modelBuilderService.getAllProducts();
+ }
   getHello(): string {
     return 'Hello World!';
   }

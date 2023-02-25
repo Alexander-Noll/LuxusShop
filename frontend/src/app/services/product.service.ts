@@ -12,6 +12,7 @@ export class ProductService {
   private filters = { brand: [] as string[], product: [] as string[] };
 
   private productList: any[] = []
+  private storedProductList : any[] = []
 
  async updateFilter(key: string, isChecked: boolean, type: string) {
     if (type === 'product') {
@@ -48,12 +49,28 @@ export class ProductService {
       this.productList = data // Log the parsed data
     }
   }
-  async sendFilters() {
 
+  async loadAllProducts(){
+    const response = await fetch('http://localhost:3000/all', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+
+    });
+
+    if (response.ok) {
+      const data = await response.json(); // Parse response data as JSON
+      console.log(data)
+      this.storedProductList = data // Log the parsed data
+
+    }
+  }
+  getAllLoadedProducts(){
+    return this.storedProductList
   }
 
   getProducts(){
-
     return this.productList;
   }
 }

@@ -18,6 +18,7 @@ import { ProductSelectionModule } from './components/pages/product-selection/pro
 import { FormsModule } from '@angular/forms';
 
 import { ProductService } from './services/product.service';
+import { LoginRoutingModule } from './components/pages/login/product-selection-routing.module';
 
 
 
@@ -37,8 +38,9 @@ import { ProductService } from './services/product.service';
     LatestModule,
     HttpClientModule,
     NgbCollapseModule,
-    FormsModule
-    ],
+    FormsModule,
+    LoginRoutingModule
+      ],
     providers: [ProductService],
   bootstrap: [AppComponent],
 })

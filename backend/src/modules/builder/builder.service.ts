@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { type } from 'os';
 import { Item } from './items.schema';
-import { Product } from './ProductSchema';
+import { Product } from './product.schema';
 
 @Injectable()
 export class BuilderService implements OnModuleInit {

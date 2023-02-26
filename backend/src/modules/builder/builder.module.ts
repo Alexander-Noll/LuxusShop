@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BuilderService } from './builder.service';
 import { ItemsSchema } from './items.schema';
-import { ProductSchema } from './ProductSchema';
+import { ProductSchema } from './product.schema';
 
 
 @Module({

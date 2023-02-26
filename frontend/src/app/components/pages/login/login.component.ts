@@ -1,29 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import * as CryptoJS from 'crypto-js';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import * as bcrypt from 'bcryptjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  loginForm = new FormGroup({
+    userName: new FormControl(),
+    password: new FormControl(),
+  });
 
-    }
 
-  username: string = '';
-  password: string = '';
-
-  submit() {
+  async submit() {
     // Generate a random salt value using bcrypt
+    const saltRounds = 10;
+    const testP = "ApfelStrudel21$"
+    console.log(this.loginForm.value.password,testP)
+    const testHash = await bcrypt.hash("ApfelStrudel21$", saltRounds);
+    const pHash = await bcrypt.hash("ApfelStrudel21$", saltRounds);
 
-    const encryptedUsername = CryptoJS.AES.encrypt(this.username, 'secret key');
-    const encryptedPassword = CryptoJS.AES.encrypt(this.password, 'secret key');
-
-    console.log(encryptedPassword)
+    bcrypt.compare("ApfelStrudel21$", testHash, function(err, result) {
+      if (err) {
+        console.log("Error:", err);
+      } else {
+        console.log("Match:", result);
+      }
+    });
     // Save the username, hashed password, and salt in the database
     // You can use a backend API to do this using HTTP requests or a library like Mongoose
   }

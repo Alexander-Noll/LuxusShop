@@ -1,14 +1,19 @@
 <div class="container">
-  <form>
-    <h1>Login</h1>
+  <form [formGroup]="loginForm" class="login-form">
+
+    <h1 class="header-logo">Login</h1>
+
     <div class="form-group">
       <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username">
+      <input type="text" class="form-control" id="username" formControlName="userName">
     </div>
+
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password">
+      <input type="password" class="form-control" id="password" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+
+    <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+
   </form>
 </div>

@@ -60,6 +60,9 @@ export class BuilderService implements OnModuleInit {
     return 'stored';
   }
 
+  async GetUserByEmail(email : string){
+    return await this.userModel.findOne({email : email}).exec();
+  }
   async getProducts() {
     return await this.itemEventModel.find({}).select('productId').exec();
   }

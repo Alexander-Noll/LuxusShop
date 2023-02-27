@@ -27,17 +27,18 @@ export class SignUpComponent implements OnInit {
   });
 
   submit(){
-
-    const formData = {
+    const data = {
       name: this.signUpForm.value.name,
-      password: this.signUpForm.value.password,
       areacode: this.signUpForm.value.areacode,
       lastName: this.signUpForm.value.lastName,
       address: this.signUpForm.value.address,
       number: this.signUpForm.value.number,
-      email: this.signUpForm.value.email
     };
-    console.log("yo")
-    this.user.createUser(formData)
+
+    const password = this.signUpForm.value.password
+    const email = this.signUpForm.value.email
+
+    this.user.createUser(data, email, password)
+    this.user.test()
   }
 }

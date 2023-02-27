@@ -17,6 +17,10 @@ export class AppService {
     return await this.modelBuilderService.handleUserRequest(data);
   }
 
+
+  async GetUserByEmail(key: string){
+    return await this.modelBuilderService.GetUserByEmail(key);
+  }
  async handleFilterRequest(brands: string[], types: string[])  {
   return await this.modelBuilderService.handleFilterRequest(brands,types);
   

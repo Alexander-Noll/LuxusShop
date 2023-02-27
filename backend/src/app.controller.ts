@@ -31,6 +31,13 @@ export class AppController {
    return ;
   }
 
+
+  @Get('user/:key')
+  async GetUserByEmail(@Param('key') key: string)  {
+    const result = await this.appService.GetUserByEmail(key);
+    return result;
+  }
+
   @Get("/all")
   async getAllProducts() {
     return await this.appService.getAllProducts();

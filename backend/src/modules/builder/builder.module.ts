@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { BuilderService } from './builder.service';
 import { ItemsSchema } from './items.schema';
 import { ProductSchema } from './product.schema';
+import { UserSchema } from './user.schema';
 
 
 @Module({
@@ -12,7 +13,7 @@ import { ProductSchema } from './product.schema';
     MongooseModule.forFeature([
       { name: 'items', schema: ItemsSchema },
  
-      
+      { name: 'user', schema: UserSchema },
     ]),
   ],
 

@@ -1,4 +1,5 @@
 import { Body, Injectable } from '@nestjs/common';
+import { AnyARecord } from 'dns';
 import { BuilderService } from './modules/builder/builder.service';
 
 @Injectable()
@@ -11,8 +12,11 @@ export class AppService {
     return await this.modelBuilderService.getProduct(key);
   }
 
- 
+  async handleUserRequest( data: any){
   
+    return await this.modelBuilderService.handleUserRequest(data);
+  }
+
  async handleFilterRequest(brands: string[], types: string[])  {
   return await this.modelBuilderService.handleFilterRequest(brands,types);
   

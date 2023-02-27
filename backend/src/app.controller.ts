@@ -17,7 +17,13 @@ export class AppController {
   async handleFilterRequest(@Body() filters: any) {
     const response = await this.appService.handleFilterRequest(filters.brand,filters.product);
     return response;
-   
+  }
+
+  @Post('/signUp')
+  async handleUserRequest(@Body() user: any) {
+    const response = await this.appService.handleUserRequest( user);
+    console.log(user)
+    return response;
   }
   @Get("/test")
   async test() {

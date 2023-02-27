@@ -18,7 +18,7 @@ import { ProductSelectionModule } from './components/pages/product-selection/pro
 import { FormsModule } from '@angular/forms';
 
 import { ProductService } from './services/product.service';
-import { LoginRoutingModule } from './components/pages/login/product-selection-routing.module';
+import { LoginRoutingModule } from './components/pages/login/login.routing.module';
 
 
 

@@ -2,26 +2,26 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { type } from 'os';
 import { Item } from './items.schema';
 import { Product } from './product.schema';
+import { User } from './user.schema';
 
 @Injectable()
 export class BuilderService implements OnModuleInit {
   constructor(
     private httpService: HttpService,
     @InjectModel('items') private itemEventModel: Model<Item>,
+    @InjectModel('user') private userModel: Model<User>,
   ) {}
 
   async getAllProducts(){
     const response = await this.itemEventModel.find().exec()
-    return response;
+    return response; 
   }
 
 
   async handleFilterRequest(brands: string[], types: string[]){
 
-  
     if(brands.length === 0){
       const response = await this.itemEventModel.find({type: { $in: types  }}).exec()
       return response;
@@ -34,6 +34,13 @@ export class BuilderService implements OnModuleInit {
       const response = await this.itemEventModel.find({ brand: { $in: brands },type: { $in: types  }}).exec()
       return response;
     }
+  }
+
+
+  async handleUserRequest(data: any){
+    const filter = { email: data.email };
+    const response = await this.userModel.findOneAndUpdate(filter, data, {upsert: true}).exec()
+      return response;
   }
   async getProduct(key: string) {
     console.log(key)
